@@ -24,7 +24,11 @@ const Game = () => {
       </div>
 
       <div className='game__round'>
-        <Link to="/" className='round__btn'>New Round</Link>
+        <div className='round__bx'>
+          <Link to="/" className='newRound__btn roundBtn'>New Round</Link>
+          <button className='nextRound__btn roundBtn'>Next Round</button>
+        </div>
+        <span className='round__loader'></span>
       </div>
     </main>
   )

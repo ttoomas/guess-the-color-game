@@ -15,6 +15,8 @@ export const setRgb = (diffCount, colorBlock, gameBx) => {
 
     
     let i = 0;
+    let greenColor = "#009700";
+    let redColor = "#cc1b1b";
     
     for(i; i < diffCount; i++){
         const newBtn = document.createElement("button");
@@ -29,17 +31,38 @@ export const setRgb = (diffCount, colorBlock, gameBx) => {
 
     // Create color element to guess the color
     colorBlock.style.backgroundColor = correctColor;
+    console.log(correctColor); //development only
 
     newBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const clickedBtnValue = btn.textContent;
+            const main = gameBx.parentNode;
+
+            main.classList.add('gameDisable');
 
             if(clickedBtnValue === correctColor){
-                alert('correct');
+                console.log('correct');
+                
+                btn.style.backgroundColor = greenColor;
+
+                newGame();
             }
             else{
-                alert('wrong');
+                console.log('wrong');
+
+                btn.style.backgroundColor = redColor;
+                newBtns[colorNum].style.backgroundColor = greenColor;
+
+                newGame();
             }
         })
     })
+
+    function newGame(){
+        setTimeout(() => {
+            console.log('its working');
+
+            // and here it call function to get new game
+        }, 3500);
+    }
 }

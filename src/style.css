@@ -138,10 +138,68 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 .game__round{
-    margin: auto 0 0 auto;
-    padding: 0 2rem 1rem 0;
+    margin-top: auto;
+    padding: 1.25rem 3rem;
 }
-.round__btn{
+.round__bx{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.round__loader{
+    display: block;
+    position: relative;
+    height: 4px;
+    width: 42vw;
+    background-color: transparent;
+    margin-left: auto;
+    margin-top: 0.625rem;
+    pointer-events: none;
+    
+}
+.round__loader::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-repeat:repeat-x;
+	background: linear-gradient(to right, 
+	#eb5252, 
+	#f78f2f,
+	#f4c151,
+	#75d850, 
+	#6284FF, 
+	#eb5252
+ 	);
+	background-size: 200% 100% !important;
+    border-radius: 1rem;
+    pointer-events: none;
+}
+
+/* Disable Game Screen */
+.main__game.gameDisable .game__colorBlock,
+.main__game.gameDisable .game__bx{
+    pointer-events: none;
+}
+.main__game.gameDisable .round__loader::before{
+    animation: roundLoaderAni 3500ms linear forwards;
+}
+
+
+@keyframes roundLoaderAni {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+/* round btns */
+.roundBtn{
     position: relative;
     display: block;
     text-decoration: none;
@@ -153,8 +211,13 @@ h1,h2,h3,h4,h5,h6,p{
     border-right: 1px solid black;
     border-left: 1px solid black;
 }
-.round__btn::before,
-.round__btn::after{
+.nextRound__btn{
+    outline: 0;
+    border-block: 0;
+    padding-block: 1.0625rem;
+}
+.roundBtn::before,
+.roundBtn::after{
     content: '';
     display: block;
     position: absolute;
@@ -163,16 +226,28 @@ h1,h2,h3,h4,h5,h6,p{
     top: 0;
     transition: all 200ms ease-in-out;
 }
-.round__btn::before{
+.roundBtn::before{
     border-bottom: 1px solid black;
+}
+.roundBtn::after{
+    border-top: 1px solid black;
+}
+
+.newRound__btn::before{
     left: 0;
 }
-.round__btn::after{
-    border-top: 1px solid black;
+.newRound__btn::after{
     right: 0;
 }
-.round__btn:hover::before,
-.round__btn:hover::after{
+.nextRound__btn::before{
+    right: 0;
+}
+.nextRound__btn::after{
+    left: 0;
+}
+
+.roundBtn:hover::before,
+.roundBtn:hover::after{
     width: 10%;
 }
 
@@ -181,6 +256,17 @@ h1,h2,h3,h4,h5,h6,p{
         padding: 0 13rem;
     }
     .game__round{
-        padding: 0 5rem 1.5rem 0;
+        padding: 1.5rem 5rem;
+    }
+}
+
+@media only screen and (max-width: 38em){
+    .game__bx{
+        display: flex;
+        flex-direction: column;
+        padding: 0 2.5rem;
+    }
+    .game__round{
+        padding: 1.125rem 1.5rem;
     }
 }
