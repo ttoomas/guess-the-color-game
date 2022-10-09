@@ -1,4 +1,4 @@
-export const setRgb = (diffCount, main) => {
+export const setRgb = (diffCount, colorBlock, gameBx) => {
     function randNum(){
         return Math.round(Math.random()*254);
     }
@@ -18,23 +18,23 @@ export const setRgb = (diffCount, main) => {
     
     for(i; i < diffCount; i++){
         const newBtn = document.createElement("button");
-        newBtn.innerHTML = randRgb();
-        main.appendChild(newBtn);
+        newBtn.className = "game__btn";
+        newBtn.textContent = randRgb();
+        gameBx.appendChild(newBtn);
     }
 
-    const correctColor = Math.round(Math.random() * (diffCount - 1));
-    const newBtns = document.querySelectorAll('button');
-    const correctValue = newBtns[correctColor].textContent;
+    const colorNum = Math.round(Math.random() * (diffCount - 1));
+    const newBtns = document.querySelectorAll('.game__btn');
+    const correctColor = newBtns[colorNum].textContent;
 
-    console.log(correctValue);
-
-    document.body.style.backgroundColor = correctValue;
+    // Create color element to guess the color
+    colorBlock.style.backgroundColor = correctColor;
 
     newBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const clickedBtnValue = btn.textContent;
 
-            if(clickedBtnValue === correctValue){
+            if(clickedBtnValue === correctColor){
                 alert('correct');
             }
             else{

@@ -1,20 +1,31 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { getGameData } from '../components/getData';
 
 const Game = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const main = document.querySelector('.main');
+    const colorBlock = document.querySelector('.game__colorBlock');
+    const gameBx = document.querySelector('.game__bx');
     
-    getGameData(location.state, main);
+    getGameData(location.state, colorBlock, gameBx);
   }, [location])
 
 
   return (
-    <main className='main' id='main'>
-      
+    <main className='main__game'>
+      <span className='game__colorBlock'>
+        <p>Guess this Color</p>
+        <p><span className='round__count'>1</span>/5</p>
+      </span>
+      <div className="game__bx">
+
+      </div>
+
+      <div className='game__round'>
+        <Link to="/" className='round__btn'>New Round</Link>
+      </div>
     </main>
   )
 }

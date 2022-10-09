@@ -48,8 +48,9 @@ h1,h2,h3,h4,h5,h6,p{
     transition: clip-path 215ms ease-in-out;
 }
 .main__btn:hover{
-    clip-path: polygon(8% 0, 89% 0, 100% 18%, 100% 78%, 91% 100%, 10% 100%, 0 82%, 0 21%);;
+    clip-path: polygon(8% 0, 89% 0, 100% 18%, 100% 78%, 91% 100%, 10% 100%, 0 82%, 0 21%);
 }
+
 
 @media only screen and (max-width: 49em){
     .main__grid{
@@ -72,5 +73,114 @@ h1,h2,h3,h4,h5,h6,p{
         font-size: 2.25rem;
         margin-bottom: 34.1rem;
         text-align: center;
+    }
+}
+
+
+/* Game */
+.main__game{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.game__colorBlock{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    padding: 1.25rem 2rem;
+}
+.game__colorBlock p:first-child{
+    font-size: 1.375rem;
+    color: black;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    margin: auto;
+}
+.game__colorBlock p:last-child{
+    font-size: 1rem;
+    padding: 0.375rem 0.5rem;
+    color: black;
+    background-color: white;
+    align-self: flex-start;
+}
+.round__count{
+    margin-right: 1px;
+}
+
+.game__bx{
+    padding: 0 5rem;
+    margin-top: 4rem;
+
+    --grid-layout-gap: 16px;
+    --grid-column-count: 3;
+    --grid-item--min-width: 250px;
+
+    --gap-count: calc(var(--grid-column-count) - 1);
+    --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+    --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
+    grid-gap: var(--grid-layout-gap);
+}
+.game__btn{
+    outline: 0;
+    border: 0;
+    background-color: black;
+    color: white;
+    padding: 1.25rem 2.125rem;
+    font-size: 1.375rem;
+    cursor: pointer;
+    clip-path: polygon(0 0, 70% 0%, 100% 0, 100% 70%, 100% 100%, 30% 100%, 0 100%, 0% 30%);
+    transition: clip-path 215ms ease-in-out;
+}
+.game__btn:hover{
+    clip-path: polygon(3% 0, 97% 0, 100% 14%, 100% 87%, 98% 100%, 3% 100%, 0 86%, 0 12%);
+}
+
+.game__round{
+    margin: auto 0 0 auto;
+    padding: 0 2rem 1rem 0;
+}
+.round__btn{
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    font-size: 1rem;
+    padding: 0.875rem 1.25rem;
+    cursor: pointer;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+.round__btn::before,
+.round__btn::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transition: all 200ms ease-in-out;
+}
+.round__btn::before{
+    border-bottom: 1px solid black;
+    left: 0;
+}
+.round__btn::after{
+    border-top: 1px solid black;
+    right: 0;
+}
+.round__btn:hover::before,
+.round__btn:hover::after{
+    width: 10%;
+}
+
+@media only screen and (min-width: 92.5em){
+    .game__bx{
+        padding: 0 13rem;
+    }
+    .game__round{
+        padding: 0 5rem 1.5rem 0;
     }
 }

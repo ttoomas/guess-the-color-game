@@ -3,7 +3,7 @@ import { setHex } from "./setHex";
 import { setHsl } from "./setHsl";
 import { setCmyk } from "./setCmyk";
 
-export const getGameData = (gameInfo, main) => {
+export const getGameData = (gameInfo, colorBlock, gameBx) => {
     const diffId = gameInfo.diffId;
     const colorId = gameInfo.colorId;
 
@@ -33,16 +33,16 @@ export const getGameData = (gameInfo, main) => {
 
     switch(colorId){
         case 0:
-            testT = setRgb(diffColorCount, main);
+            testT = setRgb(diffColorCount, colorBlock, gameBx);
             break;
         case 1:
-            setHex(diffColorCount, main);
+            setHex(diffColorCount, colorBlock, gameBx);
             break;
         case 2:
-            setHsl(diffColorCount, main);
+            setHsl(diffColorCount, colorBlock, gameBx);
             break;
         case 3:
-            setCmyk(diffColorCount, main);
+            setCmyk(diffColorCount, colorBlock, gameBx);
             break;
         default:
             console.error("Color space id is not correct, please refresh page", 500);
