@@ -15,9 +15,12 @@ const Game = () => {
 
   return (
     <main className='main__game'>
-      <span className='game__colorBlock'>
-        <p>Guess this Color</p>
-        <p><span className='round__count'>1</span>/5</p>
+      <span className='game__colorBlock notranslate'>
+        <p className='game__title'>Guess this Color</p>
+        <div className='main__count'>
+          <p>Round<span className='round__count roundCust'>1</span>/5</p>
+          <p>Points<span className='round__pts roundCust'>0</span>/5</p>
+        </div>
       </span>
       <div className="game__bx">
 
@@ -25,10 +28,15 @@ const Game = () => {
 
       <div className='game__round'>
         <div className='round__bx'>
-          <Link to="/" className='newRound__btn roundBtn'>New Round</Link>
+          <Link to="/" className='newGame__btn roundBtn'>New Game</Link>
           <button className='nextRound__btn roundBtn'>Next Round</button>
         </div>
         <span className='round__loader'></span>
+      </div>
+
+      <div className='main__popup'>
+        <Link to={'/game'} state={{diffId: location.state.diffId, colorId: location.state.colorId}} className='popup__btn'>New Round</Link>
+        <Link to="/" className='popup__btn'>New Game</Link>
       </div>
     </main>
   )
