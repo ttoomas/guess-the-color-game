@@ -101,7 +101,7 @@ export const setRgb = (diffCount, colorBlock, gameBx) => {
             // eslint-disable-next-line
             const nextRoundTime = setTimeout(() => {
                 createNewGame();
-            }, 3500);
+            }, 2800);
         }
     }
 }

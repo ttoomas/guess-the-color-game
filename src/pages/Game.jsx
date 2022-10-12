@@ -15,13 +15,13 @@ const Game = () => {
 
   return (
     <main className='main__game'>
-      <span className='game__colorBlock notranslate'>
+      <div className='game__colorBlock notranslate'>
         <p className='game__title'>Guess this Color</p>
         <div className='main__count'>
           <p>Round<span className='round__count roundCust'>1</span>/5</p>
           <p>Points<span className='round__pts roundCust'>0</span>/5</p>
         </div>
-      </span>
+      </div>
       <div className="game__bx">
 
       </div>
