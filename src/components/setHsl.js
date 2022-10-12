@@ -1,15 +1,12 @@
-export const setHsl = (diffCount) => {
-    console.log("hsl + " + diffCount);
+export const setHsl = () => {
+    function randDegree(){
+        return Math.round(Math.random()*360);
+    }
+    function randNum(){
+        return Math.round(Math.random()*100);
+    }
 
-    // function funk(){
-    //     let ii = randNumOrLetter();
-    //     console.log(ii);
-    //     if(ii == '10'){
-    //         return;
-    //     }
-    //     else{
-    //         funk();
-    //     }
-    // }
-    // funk();
+    let hsl = `hsl(${randDegree()}, ${randNum()}%, ${randNum()}%)`;
+
+    return hsl;
 }

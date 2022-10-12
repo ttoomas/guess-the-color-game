@@ -48,7 +48,29 @@ export const gameLogic = (diffCount, colorBlock, gameBx, randomColor) => {
         const correctColor = newBtns[colorNum].textContent;
     
         // Create color element to guess the color
-        colorBlock.style.backgroundColor = correctColor;
+        if(correctColor.includes('cmyk')){
+            // Convert cmyk into rgb, because css doesn't support cmyk color space
+            const cls = correctColor.substring(correctColor.indexOf('(') + 1);
+            const cmykcls = cls.substring(0, cls.indexOf(')'));
+            const numsPerc = cmykcls.split(', ');
+            const nums = numsPerc.map(char => char.slice(0, -1));
+
+            let c = (255 * nums[0]) / 100;
+            let m = (255 * nums[1]) / 100;
+            let y = (255 * nums[2]) / 100;
+            let k = (255 * nums[3]) / 100;
+
+            let r = Math.round(((255 - c) * (255 - k)) / 255) ;
+            let g = Math.round((255 - m) * (255 - k) / 255) ;
+            let b = Math.round((255 - y) * (255 - k) / 255) ;
+
+            let rgb = `rgb(${r}, ${g}, ${b})`;
+
+            colorBlock.style.backgroundColor = rgb;
+        }
+        else{
+            colorBlock.style.backgroundColor = correctColor;
+        }
     
         newBtns.forEach((btn) => {
             btn.addEventListener('click', () => {
