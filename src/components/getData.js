@@ -1,3 +1,4 @@
+import { gameLogic } from "./gameLogic";
 import { setRgb } from "./setRgb";
 import { setHex } from "./setHex";
 import { setHsl } from "./setHsl";
@@ -29,26 +30,23 @@ export const getGameData = (gameInfo, colorBlock, gameBx) => {
             console.error("Difficulty id is not correct, please refresh page", 500);
     }
 
-    let testT;
 
     switch(colorId){
         case 0:
-            testT = setRgb(diffColorCount, colorBlock, gameBx);
+            gameLogic(diffColorCount, colorBlock, gameBx, setRgb);
             break;
         case 1:
-            setHex(diffColorCount, colorBlock, gameBx);
+            gameLogic(diffColorCount, colorBlock, gameBx, setHex);
             break;
         case 2:
-            setHsl(diffColorCount, colorBlock, gameBx);
+            gameLogic(diffColorCount, colorBlock, gameBx, setHsl);
             break;
         case 3:
-            setCmyk(diffColorCount, colorBlock, gameBx);
+            gameLogic(diffColorCount, colorBlock, gameBx, setCmyk);
             break;
         default:
             console.error("Color space id is not correct, please refresh page", 500);
     }
-
-   return testT;
     
 
     // easy = 2 options
