@@ -8,7 +8,6 @@ export const gameLogic = (diffCount, colorBlock, gameBx, randomColor) => {
     const nextRoundBtn = document.querySelector('.nextRound__btn');
     const roundCountText = document.querySelector('.round__count');
     const ptsCountText = document.querySelector('.round__pts');
-    const mainPopup = document.querySelector('.main__popup');
 
     // Reset game after new round set
     gameBx.innerHTML = "";
@@ -24,11 +23,11 @@ export const gameLogic = (diffCount, colorBlock, gameBx, randomColor) => {
 
         if(roundCount > 5){
             main.classList.remove('gameDisable');   // To disable round loader
-            mainPopup.classList.add('popupActive');
+            main.classList.add('popupActive');
             return;
         }
 
-        mainPopup.classList.remove('popupActive');
+        main.classList.remove('popupActive');
 
         gameBx.innerHTML = "";
         i = 0;
